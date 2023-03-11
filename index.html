@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+            <h1 class="pre-title">숫자 맞추기 게임</h1>
+            <h1 class="title">술게임</h1>
+            <h1 class="sub-title"><span class="red-text">마셔라</span> 못맞추면</h1>
+            <div id="result-area">
+                <img src="https://mblogthumb-phinf.pstatic.net/MjAxODAzMzBfMTk4/MDAxNTIyMzU2ODk4MzUz.gq8-eO0iljGefpdMZ8T7nEjk-YinQFEERpxw1hLMO-cg.tNB1ir1QlqjZgJkOkUlK_2k2wfd6lWvCykxL2dI5zgIg.GIF.kma9501/IMG_4670.GIF?type=w800" class="main-img">
+                <h1 class="result-text">꽐라되기 싫으면 맞추자</h1>
+            </div>
+            <h2 id="result-area">결과가 나온다</h2>
+            <h2 id="chance-area">남은 찬스:</h2>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6">
+                    <input type="number" id="user-input" class="form-control mb-10" placeholder="1부터 100까지 숫자를 입력"/>
+                </div>
+                <button class="btn btn-success mb-2 button-style" id="play-button">Go!</button>
+            </div>
+            <button class="btn btn-warning mt-3 button-style button-reset" id="reset-button">리셋!</button>
+            <script src="main.js"></script>
+        </div>
+</body>
+</html>
