@@ -7,6 +7,7 @@
 //5번의 기회를 다쓰면 게임이 끝난다 (더이상 추측 불가, 버튼이 disable)
 //유저가 1~100 범위 밖에 숫자를 입력하면 알려준다. 기회를 깍지 않는다
 //유저가 이미 입력한 숫자를 또 입력하면, 알려준다,기회를 깍지 않는다
+//반응형 UI로 만든다.
 
 let computerNum = 0;
 let playButton = document.getElementById("play-button");
@@ -75,12 +76,13 @@ function play(){
 }
 function reset(){
     //리셋
+    // 새로운 번호 생성
+    pickRandomNum();
     // user input창이 깨끗하게 정리
     userInput.value = "";
     resultAreaImg.src =
     "https://mblogthumb-phinf.pstatic.net/MjAxODAzMzBfMTk4/MDAxNTIyMzU2ODk4MzUz.gq8-eO0iljGefpdMZ8T7nEjk-YinQFEERpxw1hLMO-cg.tNB1ir1QlqjZgJkOkUlK_2k2wfd6lWvCykxL2dI5zgIg.GIF.kma9501/IMG_4670.GIF?type=w800";
-    // 새로운 번호 생성
-    pickRandomNum();
+
     resultText.textContent="결과값이 여기 나옵니다!";
     gameOver = false;
     playButton.disabled = false;
