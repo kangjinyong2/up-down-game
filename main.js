@@ -17,78 +17,78 @@ let resetButton = document.getElementById("reset-button");
 let resultAreaImg = document.querySelector(".main-img");
 let resultText = document.querySelector(".result-text");
 let chances = 5; // 남은기회
-let gameover=false;
+let gameover = false;
 let chanceArea = document.getElementById("chance-area");
-let history=[]; // 입력한 숫자 리스트
+let history = []; // 입력한 숫자 리스트
 
-playButton.addEventListener("click",play);
-resetButton.addEventListener("click",reset);
-userInput.addEventListener("focus",function() {
-    userInput.value = "";
+playButton.addEventListener("click", play);
+resetButton.addEventListener("click", reset);
+userInput.addEventListener("focus", function () {
+  userInput.value = "";
 });
 
-function pickRandomNum(){
-    // 랜덤숫자 뽑기
-    computerNum = Math.floor(Math.random()*100)+1;
-    console.log("정답",computerNum);
+function pickRandomNum() {
+  // 랜덤숫자 뽑기
+  computerNum = Math.floor(Math.random() * 100) + 1;
+  console.log("정답", computerNum);
 }
-function play(){
-    // 숫자 추측
-    let userValue=userInput.value;
+function play() {
+  // 숫자 추측
+  let userValue = userInput.value;
 
-    if(userValue<1 || userValue>100){
-        resultText.textContent="1과100사이 숫자를 입력해 주세요"
-        return;
-    }
+  if (userValue < 1 || userValue > 100) {
+    resultText.textContent = "1과100사이 숫자를 입력해 주세요";
+    return;
+  }
 
-    if(history.includes(userValue)){
-        resultText.textContent = "이미 입력한 숫자입니다. 다른 숫자를 입력해 주세요.";
-        return;
-    }
-    chances -- ;
-    chanceArea.textContent = `남은기회:${chances}번`;
-    console.log("chances",chances);
+  if (history.includes(userValue)) {
+    resultText.textContent =
+      "이미 입력한 숫자입니다. 다른 숫자를 입력해 주세요.";
+    return;
+  }
+  chances--;
+  chanceArea.textContent = `남은기회:${chances}번`;
+  console.log("chances", chances);
 
-    if(userValue < computerNum){
-        resultAreaImg.src =
-        "https://mblogthumb-phinf.pstatic.net/MjAyMTAzMjlfNTQg/MDAxNjE2OTUyNzczNjgx.LHBy87VylLEg2hf8xui3u3LFIHqvLde7lHYEITT5Lakg.H7sAyMeAovSXcVt1AHerl0ANq55nPeK7E_r2hNdD64Eg.GIF.131www92/Screen%EF%BC%BFRecording%EF%BC%BF20210329%EF%BC%8D023131%EF%BC%BFYouTube%EF%BC%BF1.gif?type=w800";
-        resultText.textContent = "UP!!!";
-    }else if(userValue > computerNum){
-        resultAreaImg.src = "https://mblogthumb-phinf.pstatic.net/MjAyMDAxMDVfMTc1/MDAxNTc4MjMxNjAxMTE3.p2lr44fQHZHnrHHbpeJoq5YdDQWY2HgWYRW0EVwM2Ewg.eOWayO1RvHrLwSxaBXNgDyjfkTWsp0kebvU7tjRWBRQg.GIF.hurucin/97f2f62b.gif?type=w2";
-        resultText.textContent = "DOWN!!!";
-    }else{
-        resultAreaImg.src =
-        "https://blog.kakaocdn.net/dn/HASeZ/btqwIjW0e6F/bqfLWy2huJuSsKO787JV3K/img.gif";
-        resultText.textContent = "맞추셨습니다!!!";
-        gameover=true;
-    }
-    history.push(userValue);
-    console.log(history);
-
-    if(chances < 1){
-        gameover = true;
-    }
-    if(gameover == true){
-        playButton.disabled = true;
-    }
-
-
-}
-function reset(){
-    //리셋
-    // 새로운 번호 생성
-    pickRandomNum();
-    // user input창이 깨끗하게 정리
-    userInput.value = "";
+  if (userValue < computerNum) {
     resultAreaImg.src =
+      "https://mblogthumb-phinf.pstatic.net/MjAyMTAzMjlfNTQg/MDAxNjE2OTUyNzczNjgx.LHBy87VylLEg2hf8xui3u3LFIHqvLde7lHYEITT5Lakg.H7sAyMeAovSXcVt1AHerl0ANq55nPeK7E_r2hNdD64Eg.GIF.131www92/Screen%EF%BC%BFRecording%EF%BC%BF20210329%EF%BC%8D023131%EF%BC%BFYouTube%EF%BC%BF1.gif?type=w800";
+    resultText.textContent = "UP!!!";
+  } else if (userValue > computerNum) {
+    resultAreaImg.src =
+      "https://mblogthumb-phinf.pstatic.net/MjAyMDAxMDVfMTc1/MDAxNTc4MjMxNjAxMTE3.p2lr44fQHZHnrHHbpeJoq5YdDQWY2HgWYRW0EVwM2Ewg.eOWayO1RvHrLwSxaBXNgDyjfkTWsp0kebvU7tjRWBRQg.GIF.hurucin/97f2f62b.gif?type=w2";
+    resultText.textContent = "DOWN!!!";
+  } else {
+    resultAreaImg.src =
+      "https://blog.kakaocdn.net/dn/HASeZ/btqwIjW0e6F/bqfLWy2huJuSsKO787JV3K/img.gif";
+    resultText.textContent = "맞추셨습니다!!!";
+    gameover = true;
+  }
+  history.push(userValue);
+  console.log(history);
+
+  if (chances < 1) {
+    gameover = true;
+  }
+  if (gameover == true) {
+    playButton.disabled = true;
+  }
+}
+function reset() {
+  //리셋
+  // 새로운 번호 생성
+  pickRandomNum();
+  // user input창이 깨끗하게 정리
+  userInput.value = "";
+  resultAreaImg.src =
     "https://mblogthumb-phinf.pstatic.net/MjAxODAzMzBfMTk4/MDAxNTIyMzU2ODk4MzUz.gq8-eO0iljGefpdMZ8T7nEjk-YinQFEERpxw1hLMO-cg.tNB1ir1QlqjZgJkOkUlK_2k2wfd6lWvCykxL2dI5zgIg.GIF.kma9501/IMG_4670.GIF?type=w800";
 
-    resultText.textContent="결과값이 여기 나옵니다!";
-    gameOver = false;
-    playButton.disabled = false;
-    chances = 5;
-    chanceArea.innerHTML = `남은 기회:${chances}`;
-    history = [];
+  resultText.textContent = "결과값이 여기 나옵니다!";
+  gameover = false;
+  playButton.disabled = false;
+  chances = 5;
+  chanceArea.innerHTML = `남은 기회:${chances}`;
+  history = [];
 }
 
 pickRandomNum();
